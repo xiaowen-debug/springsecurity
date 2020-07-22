@@ -19,12 +19,13 @@
 
 <div class="layadmin-user-login layadmin-user-display-show"
      id="LAY-user-login" style="display: none;">
-
-    <form  method="post">
+    <p>${SPRING_SECURITY_LAST_EXCEPTION.message}</p>
+    <form action="${pageContext.request.contextPath }/do/login.html" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div class="layadmin-user-login-main">
             <div class="layadmin-user-login-box layadmin-user-login-header">
                 <h2>Admin</h2>
-                <p>fireNay 官方出品的单页面后台管理模板系统</p>
+                <p>xiaowen 官方出品的单页面后台管理模板系统</p>
             </div>
             <div
                     class="layadmin-user-login-box layadmin-user-login-body layui-form">

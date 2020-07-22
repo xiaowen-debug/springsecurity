@@ -25,7 +25,7 @@
         <div class="layadmin-user-login-main">
             <div class="layadmin-user-login-box layadmin-user-login-header">
                 <h2>Admin</h2>
-                <p>fireNay 官方出品的单页面后台管理模板系统</p>
+                <p>xiaowen 官方出品的单页面后台管理模板系统</p>
             </div>
             <div
                     class="layadmin-user-login-box layadmin-user-login-body layui-form">

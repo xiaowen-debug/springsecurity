@@ -22,7 +22,7 @@
     </ul>
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item"><a href="javascript:;"> <img
-                src="http://t.cn/RCzsdCq" class="layui-nav-img"> FIRENAY
+                src="http://t.cn/RCzsdCq" class="layui-nav-img"> XIAOWEN
         </a>
             <dl class="layui-nav-child">
                 <dd>
