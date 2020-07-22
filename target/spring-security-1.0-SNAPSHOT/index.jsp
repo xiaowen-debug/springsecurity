@@ -90,7 +90,7 @@
         </div>
         <div class="layui-trans layadmin-user-login-footer">
             <p>
-                © 2020 <a href="http://github.com/1046762075/" target="_blank">firefly</a>
+                © 2020 <a href="https://github.com/xiaowen-debug/springsecurity" target="_blank">XiaoWen</a>
             </p>
         </div>
     </form>

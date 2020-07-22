@@ -1,12 +1,14 @@
 package com.xiaowen.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
@@ -28,6 +30,26 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
   private DataSource dataSource;
+
+  @Autowired
+  private MyUserDetailsService userDetailsService;
+
+  @Bean
+  public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    return new BCryptPasswordEncoder();
+  }
+
+  /**
+   * 自己的加密方式 [不带盐值]
+   */
+	@Autowired
+	private MyPasswordEncoder myPasswordEncoder;
+
+  /**
+   * 加盐加密
+   */
+  @Autowired
+  private BCryptPasswordEncoder bCryptPasswordEncoder;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -100,11 +122,18 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
     // 在内存完成用户名密码的校验 指定当前用户拥有什么样的角色
+    /*
     auth.inMemoryAuthentication()
         .withUser("tom").password("123")
         .roles("ADMIN", "大师")
         .and()
         .withUser("jerry").password("123")
         .roles("UPDATE");
+    */
+
+    //数据库获取
+    auth.userDetailsService(userDetailsService)
+        // 进行加密判断
+				.passwordEncoder(bCryptPasswordEncoder);
   }
 }
